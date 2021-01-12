@@ -10,8 +10,9 @@ var x = randi() % 20
 var y = randi() % 20
 
 func _ready():
-	position = walls.get_enemy_pos(x,y)
+	#position = walls.get_enemy_pos(x,y)
 	path = walls.get_path_to_player()
+
 
 
 func _process(delta):

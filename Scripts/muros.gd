@@ -5,12 +5,16 @@ onready var player = get_parent().get_parent().get_node("pacman")
 onready var enemy = get_parent().get_parent().get_node("Enemy")
 onready var enemy2 = get_parent().get_parent().get_node("Enemy2")
 
-func _ready():
-	pass
 
+
+func _ready():
+	enemy.position =  get_enemy_pos(1,1)
+	enemy2.position =  get_enemy_pos(16,13)
+	
 func get_player_init_pos():
 	var pos = map_to_world(Vector2(14,23))
 	pos.y += half_cell_size.y
+	pos.x += half_cell_size.x
 	return pos
 	
 func is_tile_vacant(pos, direction):
@@ -49,6 +53,7 @@ func _process(delta):
 func get_enemy_pos(x,y):
 	var pos = map_to_world(Vector2(x,y)) #found through trial and error
 	pos.y += half_cell_size.y
+	pos.x += half_cell_size.x
 	return pos
 
 func get_path_to_player():
