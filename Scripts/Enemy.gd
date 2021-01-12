@@ -2,6 +2,7 @@ extends Area2D
 
 
 onready var walls = get_parent().get_node("Navigation2D/muros")
+onready var AEstrella = load("res://AStar.gd")
 var path = []
 var direction = Vector2(0,0)
 var SPEED = 25
@@ -51,10 +52,10 @@ func _process(delta):
 func move():
 	direction =  get_direccion(walls.get_grid_pos(position),walls.get_grid_pos(walls.player.position)) #walls.get_grid_pos(position) )
 	
-	
 func get_direccion(origen, destino):
 	#print("fantasma ",numero,": ",origen, "-- Jugador: ", destino)
 	var next_cell = find_next_cell_in_path([origen.x,origen.y],[destino.x,destino.y])
+		
 	var x = next_cell[0] - origen[0]
 	var y = next_cell[1] - origen[1]
 	return Vector2(x, y)
@@ -82,7 +83,10 @@ func find_next_cell_in_path(origen, destino):
 			return camino[0]
 		else:
 			origen
-
+	else:
+		var astar = AEstrella.new(grid,origen, destino)
+		return astar.camino[0]
+			
 func BFS(inicio, destino, grid):
 		var cola = [inicio]
 		var camino = []

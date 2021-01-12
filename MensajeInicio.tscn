@@ -3,14 +3,14 @@
 [ext_resource path="res://PAC-FONT.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://MensajeInicio.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 9
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 8
 font_data = ExtResource( 1 )
 
@@ -27,11 +27,13 @@ wait_time = 0.5
 autostart = true
 
 [node name="Label_Score" type="Label" parent="."]
-margin_left = 144.838
-margin_top = 251.189
-margin_right = 188.838
-margin_bottom = 265.189
-custom_fonts/font = SubResource( 3 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -82.0
+margin_top = -13.0
+custom_fonts/font = SubResource( 1 )
 text = "score:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,7 +60,7 @@ margin_left = -79.5
 margin_top = 50.0
 margin_right = 79.5
 margin_bottom = 17.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.803922, 0.537255, 0.192157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -79,7 +81,7 @@ margin_left = -109.629
 margin_top = -113.251
 margin_right = 111.371
 margin_bottom = -96.2509
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "presiona espacio"
 align = 1
 __meta__ = {
