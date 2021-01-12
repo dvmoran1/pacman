@@ -1,3 +1,5 @@
+extends Node
+
 #Class AStar
 
 #class Nodo:
@@ -22,7 +24,9 @@
 
 
 
-#class AEstrella:
+
+class_name AEstrella
+
 var grid
 var origen
 var destino
@@ -33,11 +37,11 @@ var Nodo = load("res://Nodo.gd")
 var nodos
 var camino
 
-func _init(grid, origen, destino):
-	self.grid = grid
+func _init(p_grid, p_origen, p_destino):
+	self.grid = p_grid
 
-	self.origen = Nodo.new(origen, destino)
-	self.destino = Nodo.new(destino, destino)
+	self.origen = Nodo.new(p_origen, p_destino)
+	self.destino = Nodo.new(p_destino, p_destino)
 
 	self.abierta = []
 	self.cerrada = []
@@ -49,17 +53,17 @@ func _init(grid, origen, destino):
 	while self.objetivo():
 		self.buscar()
 
-	self.camino = self.camino()
+	self.camino = self.encontrar_camino()
 
-func vecinos(nodo):
-	var nodos = []
+func vecinos(p_nodo):
+	var p_nodos = []
 	var vecinos = [[0, -1], [1, 0], [0, 1], [-1, 0]]
 	for vecino in vecinos:
-		if vecino[0] + nodo.pos[0] >= 0 and vecino[0] + nodo.pos[0] < 28:
-			if vecino[1] + nodo.pos[1] >= 0 and vecino[1] + nodo.pos[1] < 30:
-				if self.grid[vecino[0] + nodo.pos[0]][vecino[1] + nodo.pos[1]] != 1:
-					nodos.append(Nodo.new([vecino[0] + nodo.pos[0], vecino[1] + nodo.pos[1]], self.destino.pos, nodo))
-	return nodos
+		if vecino[0] + p_nodo.pos[0] >= 0 and vecino[0] + p_nodo.pos[0] < 28:
+			if vecino[1] + p_nodo.pos[1] >= 0 and vecino[1] + p_nodo.pos[1] < 30:
+				if self.grid[vecino[0] + p_nodo.pos[0]][vecino[1] + p_nodo.pos[1]] != 1:
+					p_nodos.append(Nodo.new([vecino[0] + p_nodo.pos[0], vecino[1] + p_nodo.pos[1]], self.destino.pos, p_nodo))
+	return p_nodos
 
 func f_menor():
 	var a = self.abierta[0]
@@ -103,15 +107,15 @@ func objetivo():
 			return 0
 	return 1
 
-func camino():
+func encontrar_camino():
 	var objetivo = []
 	for i in range(len(self.abierta)):
 		if self.destino.pos == self.abierta[i].pos:
 			objetivo = self.abierta[i]
 
-	var camino = []
+	var p_camino = []
 	while objetivo.padre != null:
-		camino.append(objetivo.pos)
+		p_camino.append(objetivo.pos)
 		objetivo = objetivo.padre
-		camino.invert()
-	return camino
+		p_camino.invert()
+	return p_camino

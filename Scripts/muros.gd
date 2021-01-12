@@ -15,12 +15,12 @@ var Muros = []
 
 
 func _ready():
-	enemy.position =  get_enemy_pos(1,1)
-	enemy.numero = 0
+	#enemy.position =  get_enemy_pos(1,1)
+	#enemy.numero = 0
 	enemy2.position =  get_enemy_pos(15,1)
-	enemy2.numero = 1
+	enemy2.numero = 2
 	enemy3.position =  get_enemy_pos(14,11)
-	enemy3.numero = 2
+	enemy3.numero = 0
 	cargar_archivo()
 	
 func get_player_init_pos():
@@ -54,7 +54,7 @@ func eat(pos):
 func _process(delta):
 	if (!ganar):
 		var count = 0
-		enemy.move()
+		#enemy.move()
 		enemy2.move()
 		enemy3.move()
 		for i in range(get_used_rect().size.x):

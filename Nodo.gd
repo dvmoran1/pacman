@@ -1,4 +1,7 @@
-#Clase Nodo
+
+extends Node
+
+class_name Nodo
 
 var pos
 var padre
@@ -6,10 +9,10 @@ var h
 var g
 var f
 
-func _init( pos, destino_f, padre=null):
-		self.pos = pos
-		self.padre = padre
-		self.h = distancia(self.pos, destino_f)
+func _init( p_pos, p_destino_f, p_padre=null):
+		self.pos = p_pos
+		self.padre = p_padre
+		self.h = distancia(self.pos, p_destino_f)
 
 		if self.padre == null:
 			self.g = 0

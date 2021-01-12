@@ -31,7 +31,7 @@ position = Vector2( 34.1506, 100.336 )
 script = ExtResource( 6 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 34.0172, 116.191 )
+position = Vector2( 34.1506, 100.336 )
 script = ExtResource( 6 )
 
 [node name="Inicio" parent="." instance=ExtResource( 8 )]

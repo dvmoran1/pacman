@@ -25,8 +25,16 @@ func _ready():
 
 func _process(delta):
 	if (active):
+		if (numero == 1):
+			print("Pasando el uno")
+		elif (numero == 0):
+			print("Pasando el cero")
+		else:
+			print("Pasando el otro")
+		print(direction)
+		
 		position += SPEED *  delta * direction
-	
+		
 	#if (active):
 	#	SPEED = 25
 	#	if(path.size() > 1):
@@ -50,7 +58,9 @@ func _process(delta):
 
 
 func move():
+	print("Change Move",direction)
 	direction =  get_direccion(walls.get_grid_pos(position),walls.get_grid_pos(walls.player.position)) #walls.get_grid_pos(position) )
+	print("To=>",direction)
 	
 func get_direccion(origen, destino):
 	#print("fantasma ",numero,": ",origen, "-- Jugador: ", destino)
@@ -58,6 +68,7 @@ func get_direccion(origen, destino):
 		
 	var x = next_cell[0] - origen[0]
 	var y = next_cell[1] - origen[1]
+	print ("Asig mov",Vector2(x, y))
 	return Vector2(x, y)
 
 func find_next_cell_in_path(origen, destino):
@@ -82,9 +93,10 @@ func find_next_cell_in_path(origen, destino):
 		if camino:
 			return camino[0]
 		else:
-			origen
+			return origen
 	else:
 		var astar = AEstrella.new(grid,origen, destino)
+		print (astar.camino[0])
 		return astar.camino[0]
 			
 func BFS(inicio, destino, grid):
