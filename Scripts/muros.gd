@@ -10,9 +10,15 @@ var ganar = false
 
 signal juego_ganado()
 
+var Muros = []
+
+
 func _ready():
 	enemy.position =  get_enemy_pos(1,1)
-	enemy2.position =  get_enemy_pos(16,13)
+	enemy.numero = 0
+	enemy2.position =  get_enemy_pos(15,1)
+	enemy2.numero = 1
+	cargar_archivo()
 	
 func get_player_init_pos():
 	var pos = map_to_world(Vector2(14,23))
@@ -54,15 +60,41 @@ func _process(delta):
 		if(count == 0):
 			ganar = true
 			emit_signal("juego_ganado")
-
+		enemy.move()
+		enemy2.move()
+		
+	
+				
+		
+func get_grid_pos(position):
+	var pos = world_to_map(position) #found through trial and error
+	return pos	
+	
+		
 
 func get_enemy_pos(x,y):
 	var pos = map_to_world(Vector2(x,y)) #found through trial and error
 	pos.y += half_cell_size.y
 	pos.x += half_cell_size.x
 	return pos
-
-func get_path_to_player():
-	var path = get_parent().get_simple_path(enemy.position, player.position, false)
-	return path
 	
+
+
+func cargar_archivo():
+	print("Cargando archivo")
+	var file = File.new()
+	file.open("res://walls.txt", File.READ)
+	
+	var content = file.get_as_text()
+	var cont_lines = content.split("\n")
+	file.close()
+	
+	for i in range(cont_lines.size()):
+		print(cont_lines[i])
+		for j in range(cont_lines[i].length()):
+			var let = cont_lines[i][j]
+			if let == "1":
+				Muros.append(Vector2(j, i))
+
+	
+

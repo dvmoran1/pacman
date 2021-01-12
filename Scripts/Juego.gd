@@ -76,11 +76,12 @@ func _on_Enemy_game_over():
 		$Inicio.lose()
 
 func reposicionar():
-	player.position = muros.get_player_init_pos()
+	$pacman.position = muros.get_player_init_pos()
 	$Enemy.path = []
 	$Enemy2.path = []
 	$Enemy.position = muros.get_enemy_pos(1,1)
-	$Enemy2.position =  muros.get_enemy_pos(16,13)
+	$Enemy2.position =  muros.get_enemy_pos(15,1)
+	
 
 func juego_terminado():
 	$Enemy.active = false
