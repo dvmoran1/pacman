@@ -1,11 +1,15 @@
 extends Node2D
 
+onready var player = get_node("pacman")
+onready var muros = get_node("Navigation2D/muros")
 
 var Muros = []
 var Monedas = []
 var p_pos_ini = []
 var e_pos_ini = []
 var esp_blan = []
+var vidas = 3
+var tot_moned = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +24,12 @@ func _process(delta):
 func _on_Inicio_iniciar_juego():
 	$Enemy.active = true
 	$Enemy2.active = true
-	$pacman.active = true
+	player.active = true
+	#Agregar_puntos
+	muros.ganar = false
+	for e in Monedas:
+		muros.set_cellv(e, 12)
+	
 	
 
 func cargar_archivo():
@@ -46,5 +55,36 @@ func cargar_archivo():
 				e_pos_ini.append(Vector2(j, i))
 			elif let == "B":
 				esp_blan.append(Vector2(j,i))
+	tot_moned = Monedas.size()
 	
+func _on_muros_juego_ganado():
+	print("Juego ganado")
+	juego_terminado()
+	reposicionar()
+	$Inicio.win()
 
+func _on_Enemy_game_over():
+	vidas -= 1
+	reposicionar()
+	if vidas == 2:
+		$Inicio/Life.text = "11"
+	elif vidas == 1:
+		$Inicio/Life.text = "1"
+	elif vidas == 0:
+		$Inicio/Life.text = ""
+		juego_terminado()
+		$Inicio.lose()
+
+func reposicionar():
+	player.position = muros.get_player_init_pos()
+	$Enemy.path = []
+	$Enemy2.path = []
+	$Enemy.position = muros.get_enemy_pos(1,1)
+	$Enemy2.position =  muros.get_enemy_pos(16,13)
+
+func juego_terminado():
+	$Enemy.active = false
+	$Enemy2.active = false
+	player.active = false
+	vidas = 3
+	tot_moned = Monedas.size()

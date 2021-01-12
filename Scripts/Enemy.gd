@@ -10,8 +10,10 @@ var active = false
 var x = randi() % 20
 var y = randi() % 20
 
+signal game_over()
+
 func _ready():
-	position = walls.get_enemy_pos(1,5)
+	#position = walls.get_enemy_pos(1,5)
 	path = walls.get_path_to_player()
 
 
@@ -43,3 +45,6 @@ func _process(delta):
 func _on_Enemy_area_entered(area):
 	if(area.name == "pacman"):
 		print("Game Over")
+		emit_signal("game_over")
+		
+
