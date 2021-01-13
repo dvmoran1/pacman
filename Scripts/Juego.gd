@@ -20,6 +20,7 @@ func _on_Inicio_iniciar_juego():
 	$Enemy.active = true
 	$EnemyBlue.active = true
 	$EnemyOrange.active = true
+	$EnemyPink.active = true
 	player.active = true
 	#Agregar_puntos
 	muros.ganar = false
@@ -58,6 +59,7 @@ func juego_terminado():
 	$Enemy.active = false
 	$EnemyBlue.active = false
 	$EnemyOrange.active = false
+	$EnemyPink.active = false
 	player.active = false
 	vidas = 3
 	muros.tot_moned = muros.Monedas.size()

@@ -54,9 +54,11 @@ func find_next_cell_in_path(origen, destino):
 			return camino[0]
 		else:
 			return origen
-	else:
+	elif numero == 2:
 		var astar = AEstrella.new(grid,origen, destino)
 		return astar.camino[0]
+	else:
+		return  BPI(origen, destino, grid)
 			
 func BFS(inicio, destino, grid):
 		var cola = [inicio]
@@ -89,22 +91,23 @@ func BFS(inicio, destino, grid):
 func BPI(origen, destino, grid):
 	var profundidad = 0
 	while 1:
-		var resultado = BPL(origen, destino, profundidad, grid)
+		var resultado = BPL(origen, destino, profundidad, grid, [])
 		if resultado:
 			return resultado
 		profundidad = profundidad + 1
 	
-func BPL(actual, objetivo, profundidad, grid):
+func BPL(actual, objetivo, profundidad, grid, visitados):
 	if profundidad == 0 and actual == objetivo:
 		return actual
-	elif profundidad > 0:
+	elif profundidad > 0 and visitados.find(actual) == -1:
+		visitados.append(actual)
 		var vecinos = [[0, -1], [1, 0], [0, 1], [-1, 0]]
 		for vecino in vecinos:
 			if vecino[0]+actual[0] >= 0 and vecino[0] + actual[0] < len(grid): #Validamos X
 				if vecino[1]+actual[1] >= 0 and vecino[1] + actual[1] < len(grid[0]): #Validamos Y
 					var next_cell = [vecino[0] + actual[0], vecino[1] + actual[1]]
 					if grid[next_cell[0]][next_cell[1]] != 1:
-						var resultado = BPL(next_cell, objetivo, profundidad-1, grid)
+						var resultado = BPL(next_cell, objetivo, profundidad-1, grid, visitados)
 						if resultado:
 							return next_cell
 	else:
@@ -118,7 +121,7 @@ func DFS(inicio, destino, grid,solucion, visitados):
 			if  visitados.find(inicio) == -1:
 				visitados.append(inicio)
 				var vecinos = [[1, 0], [0, -1], [-1, 0], [0, 1]]
-				#vecinos.shuffle()
+				vecinos.shuffle()
 				for vecino in vecinos:
 					if (0 <= vecino[0] + inicio[0]) and vecino[0] + inicio[0] < len(grid): #Validamos x
 						if 0 <= vecino[1] + inicio[1] and vecino[1] + inicio[1] < len(grid[0]): #Validamos y
