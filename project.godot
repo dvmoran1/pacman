@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "AEstrella",
 "language": "GDScript",
-"path": "res://AStar.gd"
+"path": "res://Scripts/AStar.gd"
 }, {
 "base": "Node",
 "class": "Nodo",
 "language": "GDScript",
-"path": "res://Nodo.gd"
+"path": "res://Scripts/Nodo.gd"
 } ]
 _global_script_class_icons={
 "AEstrella": "",

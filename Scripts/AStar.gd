@@ -33,7 +33,7 @@ var destino
 var abierta
 var cerrada
 var select
-var Nodo = load("res://Nodo.gd")
+var Nodo = load("res://Scripts/Nodo.gd")
 var nodos
 var camino
 

@@ -3,8 +3,8 @@ extends TileMap
 onready var half_cell_size = get_cell_size()/2
 onready var player = get_parent().get_parent().get_node("pacman")
 onready var enemy = get_parent().get_parent().get_node("Enemy")
-onready var enemy2 = get_parent().get_parent().get_node("Enemy2")
-onready var enemy3 = get_parent().get_parent().get_node("Enemy3")
+onready var enemy2 = get_parent().get_parent().get_node("EnemyBlue")
+onready var enemy3 = get_parent().get_parent().get_node("EnemyOrange")
 onready var score = get_parent().get_parent().get_node("Inicio").get_child(2)
 onready var padre = get_parent().get_parent()
 var ganar = false
@@ -15,12 +15,12 @@ var Muros = []
 
 
 func _ready():
-	#enemy.position =  get_enemy_pos(1,1)
-	#enemy.numero = 0
+	enemy.position =  get_enemy_pos(1,1)
+	enemy.numero = 0
 	enemy2.position =  get_enemy_pos(15,1)
-	enemy2.numero = 2
+	enemy2.numero = 1
 	enemy3.position =  get_enemy_pos(14,11)
-	enemy3.numero = 0
+	enemy3.numero = 2
 	cargar_archivo()
 	
 func get_player_init_pos():
@@ -54,7 +54,7 @@ func eat(pos):
 func _process(delta):
 	if (!ganar):
 		var count = 0
-		#enemy.move()
+		enemy.move()
 		enemy2.move()
 		enemy3.move()
 		for i in range(get_used_rect().size.x):

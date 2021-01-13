@@ -23,7 +23,8 @@ func _process(delta):
 
 func _on_Inicio_iniciar_juego():
 	$Enemy.active = true
-	$Enemy2.active = true
+	$EnemyBlue.active = true
+	$EnemyOrange.active = true
 	player.active = true
 	#Agregar_puntos
 	muros.ganar = false
@@ -77,15 +78,15 @@ func _on_Enemy_game_over():
 
 func reposicionar():
 	$pacman.position = muros.get_player_init_pos()
-	$Enemy.path = []
-	$Enemy2.path = []
 	$Enemy.position = muros.get_enemy_pos(1,1)
-	$Enemy2.position =  muros.get_enemy_pos(15,1)
+	$EnemyBlue.position =  muros.get_enemy_pos(15,1)
+	$EnemyOrange.position =  muros.get_enemy_pos(14,11)
 	
 
 func juego_terminado():
 	$Enemy.active = false
-	$Enemy2.active = false
+	$EnemyBlue.active = false
+	$EnemyOrange.active = false
 	player.active = false
 	vidas = 3
 	tot_moned = Monedas.size()
