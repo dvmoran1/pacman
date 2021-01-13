@@ -48,9 +48,10 @@ func _on_Enemy_game_over():
 
 func reposicionar():
 	$pacman.position = muros.get_player_init_pos()
-	$Enemy.position = muros.get_enemy_pos(1,1)
-	$EnemyBlue.position =  muros.get_enemy_pos(15,1)
-	$EnemyOrange.position =  muros.get_enemy_pos(14,11)
+	$Enemy.position = muros.get_enemy_pos(11,13)
+	$EnemyBlue.position =   muros.get_enemy_pos(11,15)
+	$EnemyOrange.position =  muros.get_enemy_pos(15,13)
+	$EnemyPink.position = muros.get_enemy_pos(15,15)
 	
 
 func juego_terminado():

@@ -5,6 +5,8 @@ onready var player = get_parent().get_parent().get_node("pacman")
 onready var enemy = get_parent().get_parent().get_node("Enemy")
 onready var enemy2 = get_parent().get_parent().get_node("EnemyBlue")
 onready var enemy3 = get_parent().get_parent().get_node("EnemyOrange")
+onready var enemy4 = get_parent().get_parent().get_node("EnemyPink")
+
 onready var score = get_parent().get_parent().get_node("Inicio").get_child(2)
 onready var padre = get_parent().get_parent()
 var ganar = false
@@ -17,12 +19,14 @@ var tot_moned = 0
 
 
 func _ready():
-	enemy.position =  get_enemy_pos(1,1)
+	enemy.position =  get_enemy_pos(11,13)
 	enemy.numero = 0
-	enemy2.position =  get_enemy_pos(15,1)
+	enemy2.position =  get_enemy_pos(11,15)
 	enemy2.numero = 1
-	enemy3.position =  get_enemy_pos(14,11)
+	enemy3.position =  get_enemy_pos(15,13)
 	enemy3.numero = 2
+	enemy4.position =  get_enemy_pos(15,15)
+	enemy4.numero = 3
 	cargar_archivo()
 	
 func get_player_init_pos():
@@ -59,6 +63,7 @@ func _process(delta):
 		enemy.move()
 		enemy2.move()
 		enemy3.move()
+		enemy4.move()
 		for i in range(get_used_rect().size.x):
 			for j in range(get_used_rect().size.y):
 				var tile = get_cell(i,j)
