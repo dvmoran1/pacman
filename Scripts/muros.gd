@@ -12,6 +12,8 @@ var ganar = false
 signal juego_ganado()
 
 var Muros = []
+var Monedas = []
+var tot_moned = 0
 
 
 func _ready():
@@ -62,7 +64,7 @@ func _process(delta):
 				var tile = get_cell(i,j)
 				if(tile == 12):
 					count += 1
-		score.text = String((padre.tot_moned+1 - count)*10)
+		score.text = String((tot_moned+1 - count)*10)
 		if(count == 0):
 			ganar = true
 			emit_signal("juego_ganado")
@@ -70,8 +72,7 @@ func _process(delta):
 func get_grid_pos(position):
 	var pos = world_to_map(position) #found through trial and error
 	return pos	
-	
-		
+
 
 func get_enemy_pos(x,y):
 	var pos = map_to_world(Vector2(x,y)) #found through trial and error
@@ -96,6 +97,8 @@ func cargar_archivo():
 			var let = cont_lines[i][j]
 			if let == "1":
 				Muros.append(Vector2(j, i))
-
+			elif let == "C":
+				Monedas.append(Vector2(j, i))
+	tot_moned = Monedas.size()
 	
 

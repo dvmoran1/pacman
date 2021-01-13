@@ -3,20 +3,19 @@
 [ext_resource path="res://PAC-FONT.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/MensajeInicio.gd" type="Script" id=2]
 
-
 [sub_resource type="DynamicFont" id=1]
-size = 9
+size = 18
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 8
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 13
+size = 26
 outline_color = Color( 0.690196, 0.929412, 0.0666667, 1 )
 font_data = ExtResource( 1 )
 
@@ -32,8 +31,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -82.0
-margin_top = -13.0
+margin_left = -131.613
+margin_top = -23.0908
+margin_right = -44.6129
+margin_bottom = -4.09076
 custom_fonts/font = SubResource( 1 )
 text = "score:"
 __meta__ = {
@@ -45,9 +46,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -34.0
-margin_top = -14.0
-margin_right = -2.0
+margin_left = -39.0453
+margin_top = -18.2045
+margin_right = -7.04535
+margin_bottom = -4.20447
 text = "1000"
 align = 2
 __meta__ = {
@@ -57,10 +59,10 @@ __meta__ = {
 [node name="Titulo_Juego" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -79.5
-margin_top = 50.0
-margin_right = 79.5
-margin_bottom = 17.0
+margin_left = -95.879
+margin_top = 54.4097
+margin_right = 99.121
+margin_bottom = 87.4097
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.803922, 0.537255, 0.192157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -78,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -109.629
-margin_top = -113.251
-margin_right = 111.371
-margin_bottom = -96.2509
+margin_left = -107.106
+margin_top = -175.477
+margin_right = 113.894
+margin_bottom = -158.477
 custom_fonts/font = SubResource( 3 )
 text = "presiona espacio"
 align = 1
@@ -97,9 +99,9 @@ one_shot = true
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.11013
-margin_top = -14.5749
-margin_right = 50.1101
-margin_bottom = -0.574921
+margin_top = -28.0292
+margin_right = 77.1101
+margin_bottom = -1.02924
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.886275, 1, 0, 1 )
 text = "111"

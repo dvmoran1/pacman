@@ -3,11 +3,12 @@
 [ext_resource path="res://Sprites.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+extents = Vector2( 8.1875, 6.875 )
 
 [node name="EnemyOrange" type="Area2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 227.421, 56.1681, 8.48181, 7.3252 )
