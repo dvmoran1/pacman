@@ -86,6 +86,31 @@ func BFS(inicio, destino, grid):
 					ruta.insert(0, item["Current"])
 		return ruta
 		
+func BPI(origen, destino, grid):
+	var profundidad = 0
+	while 1:
+		var resultado = BPL(origen, destino, profundidad, grid)
+		if resultado:
+			return resultado
+		profundidad = profundidad + 1
+	
+func BPL(actual, objetivo, profundidad, grid):
+	if profundidad == 0 and actual == objetivo:
+		return actual
+	elif profundidad > 0:
+		var vecinos = [[0, -1], [1, 0], [0, 1], [-1, 0]]
+		for vecino in vecinos:
+			if vecino[0]+actual[0] >= 0 and vecino[0] + actual[0] < len(grid): #Validamos X
+				if vecino[1]+actual[1] >= 0 and vecino[1] + actual[1] < len(grid[0]): #Validamos Y
+					var next_cell = [vecino[0] + actual[0], vecino[1] + actual[1]]
+					if grid[next_cell[0]][next_cell[1]] != 1:
+						var resultado = BPL(next_cell, objetivo, profundidad-1, grid)
+						if resultado:
+							return next_cell
+	else:
+		return null
+		
+		
 func DFS(inicio, destino, grid,solucion, visitados):
 		if inicio == destino:
 			return solucion
